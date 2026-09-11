@@ -4,15 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- Sticky Header Logic ---
     const header = document.getElementById('main-header');
-    const logoImg = document.getElementById('logo-img');
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
-            if(logoImg) logoImg.style.height = '40px';
         } else {
             header.classList.remove('scrolled');
-            if(logoImg) logoImg.style.height = '50px';
         }
     });
 
@@ -26,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if(targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Offset for sticky header
+                    top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
             }
@@ -47,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             } else {
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Stop observing once revealed
+                observer.unobserve(entry.target);
             }
         });
     }, revealOptions);
@@ -58,9 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Form Submission Prevention (For Demo) ---
     const form = document.getElementById('enquiry-form');
+
     if(form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
+
             const btn = form.querySelector('button');
             const originalText = btn.innerText;
             
@@ -72,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Secure message transmitted successfully. A case handler will contact you via encrypted channels.');
                 form.reset();
                 btn.innerText = originalText;
-                btn.style.backgroundColor = ''; // Reset to CSS default
+                btn.style.backgroundColor = '';
             }, 2000);
         });
     }
